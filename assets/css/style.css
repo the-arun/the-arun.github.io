@@ -27,7 +27,6 @@
   --gradient-secondary: linear-gradient(135deg, #1e40af 0%, #2563eb 100%);
 }
 
-/* Reset and Base Styles */
 * {
   margin: 0;
   padding: 0;
@@ -36,7 +35,7 @@
 
 html {
   scroll-behavior: smooth;
-  scroll-padding-top: 80px;
+  scroll-padding-top: clamp(70px, 12vw, 90px); /* Adjusted for fixed navbar */
 }
 
 body {
@@ -49,6 +48,31 @@ body {
   text-rendering: optimizeLegibility;
 }
 
+/* Ensure navbar is fixed and doesn’t overlap content */
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: clamp(60px, 10vw, 80px); /* Matches scroll-padding-top */
+  background-color: var(--bg-primary, #fff);
+  z-index: 1000; /* High z-index to stay on top */
+}
+
+/* Section styling to prevent overlap */
+section {
+  position: relative;
+  min-height: 100vh; /* Full viewport height for each section */
+  padding-top: clamp(80px, 12vw, 100px); /* Space for navbar */
+  z-index: 1; /* Below navbar */
+}
+
+/* Specific section IDs */
+#home, #about {
+  width: 100%;
+  box-sizing: border-box;
+}
+
 /* Typography */
 h1, h2, h3, h4, h5, h6 {
   font-family: 'Poppins', sans-serif;
@@ -57,10 +81,10 @@ h1, h2, h3, h4, h5, h6 {
   color: var(--text-primary);
 }
 
-h1 { font-size: clamp(2.5rem, 5vw, 4rem); }
-h2 { font-size: clamp(2rem, 4vw, 3rem); }
-h3 { font-size: clamp(1.5rem, 3vw, 2rem); }
-h4 { font-size: clamp(1.25rem, 2.5vw, 1.5rem); }
+h1 { font-size: clamp(2rem, 5vw, 3.5rem); }
+h2 { font-size: clamp(1.75rem, 4vw, 2.75rem); }
+h3 { font-size: clamp(1.25rem, 3vw, 1.75rem); }
+h4 { font-size: clamp(1rem, 2.5vw, 1.25rem); }
 
 p {
   font-size: 1rem;
@@ -83,7 +107,7 @@ p {
 
 .section-header {
   text-align: center;
-  margin-bottom: 4rem;
+  margin-bottom: 3rem;
 }
 
 .section-title {
@@ -99,6 +123,57 @@ p {
   color: var(--text-secondary);
   max-width: 600px;
   margin: 0 auto;
+}
+
+/* Fix social icons (from previous context) */
+.contact-social .social-links a.social-link i {
+  color: #333; /* Dark gray for visibility */
+}
+.contact-social .social-links a.social-link:hover i {
+  color: #007bff; /* Blue on hover */
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+  html {
+    scroll-padding-top: clamp(50px, 10vw, 70px); /* Smaller for tablets */
+  }
+  .navbar {
+    height: clamp(50px, 8vw, 60px); /* Smaller navbar */
+  }
+  section {
+    padding-top: clamp(60px, 10vw, 80px); /* Adjust for smaller navbar */
+    min-height: 80vh; /* Slightly shorter sections */
+  }
+  .container {
+    padding: 0 15px;
+  }
+  h1 { font-size: clamp(1.75rem, 6vw, 2.75rem); }
+  h2 { font-size: clamp(1.5rem, 5vw, 2.25rem); }
+  h3 { font-size: clamp(1.125rem, 4vw, 1.5rem); }
+  h4 { font-size: clamp(0.875rem, 3vw, 1.125rem); }
+  .section-header {
+    margin-bottom: 2rem;
+  }
+}
+
+@media (max-width: 480px) {
+  html {
+    scroll-padding-top: clamp(40px, 8vw, 60px); /* Minimal for phones */
+  }
+  .navbar {
+    height: clamp(40px, 8vw, 50px);
+  }
+  section {
+    padding-top: clamp(50px, 8vw, 70px);
+    min-height: 70vh;
+  }
+  .container {
+    padding: 0 10px;
+  }
+  .section-header {
+    margin-bottom: 1.5rem;
+  }
 }
 
 /* Buttons */
