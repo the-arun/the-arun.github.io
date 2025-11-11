@@ -417,7 +417,7 @@
    */
   const preloadImages = () => {
     const criticalImages = [
-      'assets/img/profile-img.png',
+      'assets/img/profile-img2.jpg',
       'assets/img/hero-bg.jpg'
     ];
     

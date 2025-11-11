@@ -399,6 +399,8 @@ p {
   background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
   position: relative;
   overflow: hidden;
+  margin-left: 300px;
+  padding: 0 40px;
 }
 
 .hero-section::before {
@@ -1156,6 +1158,11 @@ textarea.form-control {
   
   #main {
     margin-left: 0;
+  }
+  
+  .hero-section {
+    margin-left: 0;
+    padding: 0 20px;
   }
   
   .mobile-nav-toggle {
